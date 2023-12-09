@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">MaReu</string>
+    <string name="app_name">MyMeet</string>
+    <string name="title_activity_my_meeting">MyMeetingActivity</string>
+    <string name="meeting_name_res">Name of the meeting</string>
+    <string name="select_date">Select a date</string>
+    <string name="date">Date</string>
+    <string name="search">Search</string>
+    <string name="save">Save</string>
+    <string name="end">End</string>
+    <string name="start">Beginning</string>
+    <string name="email">Email</string>
+    <string name="label_toolbar">My Meet</string>
+    <string name="from">From</string>
+    <string name="to">to</string>
+    <string name="by_date">By date</string>
+    <string name="by_room">By room</string>
+    <string name="Filter_by_date">Filter by date</string>
+    <string name="filter_by_room">Filter by room</string>
+    <string name="validate">Validate</string>
+    <string name="room_logo">Room logo</string>
+    <string name="room">Salle</string>
+    <string name="add_meeting">Add meeting</string>
+
+    <string name="name_input_error">Please input a meeting name</string>
+    <string name="room_input_error">Please select a room</string>
+    <string name="email_input_error">Please input a correct email</string>
+    <string name="participants_input_error">Please add guests</string>
+    <string name="remove">remove</string>
+    <string name="add">Add</string>
 </resources>
