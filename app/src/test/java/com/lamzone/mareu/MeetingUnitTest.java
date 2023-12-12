@@ -4,12 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import com.lamzone.mareu.DI.DependencyInjector;
+import com.lamzone.mareu.di.DependencyInjector;
 import com.lamzone.mareu.model.Meeting;
 import com.lamzone.mareu.model.Participant;
 import com.lamzone.mareu.service.DummyMeetingApiServiceGenerator;
 import com.lamzone.mareu.service.MeetingApiService;
-
 
 import org.junit.Before;
 import org.junit.Test;

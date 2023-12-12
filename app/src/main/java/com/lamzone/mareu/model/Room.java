@@ -2,6 +2,10 @@ package com.lamzone.mareu.model;
 
 import androidx.annotation.NonNull;
 
+/**
+ * Room class
+ * @author Hakim
+ */
 public class Room {
     private final int idRoom;
     private final String roomName;

@@ -50,9 +50,9 @@ public class DummyMeetingApiService implements MeetingApiService {
     @Override
     public void deleteMeeting(int meetingId) {
         Meeting meeting = mMeetings.stream()
-                        .filter(meet -> meetingId == meet.getMeetingId())
-                        .findAny()
-                        .orElse(null);
+                .filter(meet -> meetingId == meet.getMeetingId())
+                .findAny()
+                .orElse(null);
         mMeetings.remove(meeting);
     }
     /**

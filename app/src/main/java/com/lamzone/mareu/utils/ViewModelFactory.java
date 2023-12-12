@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.lamzone.mareu.MainApplication;
-import com.lamzone.mareu.ui_mareu.addmeeting.viewmodel.AddMeetingViewModel;
-import com.lamzone.mareu.ui_mareu.listmeetings.viewmodel.MeetingsViewModel;
+import com.lamzone.mareu.ui.addmeeting.viewmodel.AddMeetingViewModel;
+import com.lamzone.mareu.ui.listmeetings.viewmodel.MeetingsViewModel;
 
 /**
  * ViewModel Factory

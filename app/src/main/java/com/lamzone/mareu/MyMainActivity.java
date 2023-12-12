@@ -3,18 +3,17 @@ package com.lamzone.mareu;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
-
-import androidx.activity.OnBackPressedCallback;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -25,7 +24,6 @@ import com.lamzone.mareu.databinding.ActivityMyMeetingBinding;
  * @author Hakim
  */
 public class MyMainActivity extends AppCompatActivity {
-
     private AppBarConfiguration appBarConfiguration;
     public NavController navController;
 
@@ -35,8 +33,8 @@ public class MyMainActivity extends AppCompatActivity {
 
         ActivityMyMeetingBinding binding = ActivityMyMeetingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_my_meeting);
+        NavHostFragment navHostFragment = (NavHostFragment)getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_my_meeting);
+        navController = navHostFragment.getNavController();
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

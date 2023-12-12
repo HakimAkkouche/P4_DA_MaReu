@@ -7,6 +7,7 @@
 
     <fragment
         android:id="@+id/MeetingsFragment"
+        android:name="com.lamzone.mareu.ui.listmeetings.MeetingsFragment"
         android:label="@string/label_toolbar"
         tools:layout="@layout/fragment_meetings_list">
         <action
@@ -15,11 +16,10 @@
     </fragment>
     <fragment
         android:id="@+id/AddFragment"
+        android:name="com.lamzone.mareu.ui.addmeeting.AddMeetingFragment"
         tools:layout="@layout/fragment_add_meeting">
-
         <action
             android:id="@+id/action_AddFragment_to_MeetingsFragment"
             app:destination="@id/MeetingsFragment" />
-
     </fragment>
 </navigation>

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
 public abstract class DummyMeetingApiServiceGenerator {
 
     private final static List<Participant> DUMMY_PARTICIPANT_LIST = Arrays.asList(

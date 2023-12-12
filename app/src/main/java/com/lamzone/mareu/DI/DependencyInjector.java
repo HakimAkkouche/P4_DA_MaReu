@@ -1,8 +1,9 @@
-package com.lamzone.mareu.DI;
+package com.lamzone.mareu.di;
 
 import com.lamzone.mareu.BuildConfig;
 import com.lamzone.mareu.service.DummyMeetingApiService;
 import com.lamzone.mareu.service.MeetingApiService;
+
 /**
  * Dependency injector
  * @author Hakim
@@ -25,3 +26,4 @@ public class DependencyInjector {
         return mService;
     }
 }
+

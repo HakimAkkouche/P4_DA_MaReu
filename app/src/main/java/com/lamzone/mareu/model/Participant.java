@@ -1,5 +1,4 @@
 package com.lamzone.mareu.model;
-
 /**
  * Participant class
  * @author Hakim

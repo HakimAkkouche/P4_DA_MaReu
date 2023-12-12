@@ -21,9 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
-
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.filters.LargeTest;
 import androidx.test.runner.AndroidJUnit4;
@@ -122,7 +120,7 @@ public class MyMeetingsTest {
     public void b_myMeetingsList_deleteAction_shouldRemoveItem() {
         onView(withId(R.id.meeting_list_view)).check(new RecyclerViewItemCountAssertion(7));
         onView(allOf(withId(R.id.meeting_list_view), isDisplayed()))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(6, new DeleteViewAction()));
+                .perform(actionOnItemAtPosition(6, new DeleteViewAction()));
         onView(withId(R.id.meeting_list_view)).check(new RecyclerViewItemCountAssertion(6));
     }
 

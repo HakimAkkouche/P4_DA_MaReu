@@ -3,7 +3,7 @@ package com.lamzone.mareu.service;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.lamzone.mareu.DI.DependencyInjector;
+import com.lamzone.mareu.di.DependencyInjector;
 import com.lamzone.mareu.model.Meeting;
 
 import java.util.ArrayList;
