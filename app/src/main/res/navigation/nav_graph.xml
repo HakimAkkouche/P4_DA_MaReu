@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/MeetingsFragment">
+
+    <fragment
+        android:id="@+id/MeetingsFragment"
+        android:name="com.lamzone.mareu.ui.listmeetings.MeetingsFragment"
+        android:label="@string/label_toolbar"
+        tools:layout="@layout/fragment_meetings_list">
+        <action
+            android:id="@+id/action_MeetingsFragment_to_AddFragment"
+            app:destination="@id/AddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddFragment"
+        android:name="com.lamzone.mareu.ui.addmeeting.AddMeetingFragment"
+        tools:layout="@layout/fragment_add_meeting">
+        <action
+            android:id="@+id/action_AddFragment_to_MeetingsFragment"
+            app:destination="@id/MeetingsFragment" />
+    </fragment>
+</navigation>

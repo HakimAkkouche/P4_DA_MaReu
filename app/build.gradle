@@ -13,7 +13,24 @@ android {
         versionCode 1
         versionName "1.0"
 
+        // defining the build date
+        buildConfigField "long", "BUILD_DATE", System.currentTimeMillis() + "L"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    tasks.withType(JavaCompile).tap {
+        configureEach {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+    buildscript {
+        repositories {
+            google()
+        }
+        dependencies {
+            def nav_version = "2.5.3"
+            classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        }
     }
 
     buildTypes {
@@ -22,17 +39,78 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildFeatures {
+        buildConfig true
+        viewBinding true
+    }
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    testOptions {
+        animationsDisabled = true
     }
 }
 
 dependencies {
 
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.8.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.1'
+}
+android.applicationVariants.all { variant ->
+    task("generate${variant.name.capitalize()}Javadoc", type: Javadoc) {
+        description "Generates Javadoc for $variant.name."
+        source = variant.javaCompile.source
+        destinationDir = file("$rootDir/javadoc/")
+        failOnError false
+        doFirst {
+            ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+            classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
+
+            options.addStringOption "-show-members", "package"
+            options.addStringOption "-bootclasspath /path/to/sdk/platforms/android-##/android.jar"
+        }
+    }
+}
+android.applicationVariants.all { variant ->
+    task("generates${variant.name.capitalize()}Javadoc", type: Javadoc) {
+        title "API Documentation (${project.android.defaultConfig.versionName})"
+        group "ApiDoc"
+        description "Generates Javadoc for $variant.name."
+
+        // Source files from the variant
+        source = variant.sourceSets.collect { it.java.sourceFiles }.inject { m, i -> m + i }
+
+        // To fix issue: Error: Can not create variant 'android-lint' after configuration ': library: debugRuntimeElements' has been resolved
+        doFirst {
+            classpath = project.files(variant.javaCompileProvider.get().classpath.files,
+                    project.android.getBootClasspath())
+        }
+
+        if (JavaVersion.current().isJava8Compatible()) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+
+
+        if (JavaVersion.current().isJava8Compatible()) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+
+        options.windowTitle = "API Documentation (${project.android.defaultConfig.versionName})"
+        options.memberLevel = JavadocMemberLevel.PROTECTED
+        options.linkSource false
+        options.author = false
+
+        failOnError true
+    }
+
 }

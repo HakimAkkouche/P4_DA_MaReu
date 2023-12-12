@@ -1,0 +1,13 @@
+com.lamzone.mareu
+com.lamzone.mareu.databinding
+com.lamzone.mareu.di
+com.lamzone.mareu.model
+com.lamzone.mareu.service
+com.lamzone.mareu.ui.addmeeting
+com.lamzone.mareu.ui.addmeeting.viewmodel
+com.lamzone.mareu.ui.listmeetings
+com.lamzone.mareu.ui.listmeetings.filter_date
+com.lamzone.mareu.ui.listmeetings.filter_room
+com.lamzone.mareu.ui.listmeetings.viewmodel
+com.lamzone.mareu.utils
+com.lamzone.mareu.utils.livedata
